@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodiversity Interactive Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .collapsible {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+        }
+        .active, .collapsible:hover {
+            background-color: #45a049;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+        }
+        .quiz-container {
+            margin: 20px;
+        }
+        .quiz-question {
+            margin-bottom: 10px;
+        }
+        .ecosystem-diagram {
+            margin: 20px;
+            text-align: center;
+        }
+        .diagram-part {
+            display: inline-block;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Biodiversity Interactive Learning</h1>
+
+    <h2>Explore the Wonders of Biodiversity</h2>
+
+    <!-- Collapsible Content -->
+    <button class="collapsible">What is Biodiversity?</button>
+    <div class="content">
+        <p>Biodiversity refers to the variety of life on Earth at all its levels, from genes to ecosystems. It includes the evolutionary, ecological, and cultural processes that sustain life.</p>
+    </div>
+
+    <button class="collapsible">Why is Biodiversity Important?</button>
+    <div class="content">
+        <p>Biodiversity is important because it boosts ecosystem productivity where each species has a role to play. For example, a larger number of plant species means a greater variety of crops. Greater species diversity ensures natural sustainability for all life forms.</p>
+    </div>
+
+    <button class="collapsible">Threats to Biodiversity</button>
+    <div class="content">
+        <p>Threats to biodiversity include habitat loss, climate change, pollution, invasive species, and over-exploitation of resources. Conservation efforts are essential to protect our planet's biological diversity.</p>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-container">
+        <h2>Test Your Knowledge!</h2>
+        <div class="quiz-question">
+            <p>Which of the following is NOT a threat to biodiversity?</p>
+            <form id="quizForm">
+                <input type="radio" name="answer" value="1"> Climate Change<br>
+                <input type="radio" name="answer" value="2"> Pollution<br>
+                <input type="radio" name="answer" value="3"> Habitat Restoration<br>
+                <input type="radio" name="answer" value="4"> Invasive Species<br><br>
+                <button type="button" onclick="checkAnswer()">Submit Answer</button>
+            </form>
+        </div>
+        <div id="quizFeedback"></div>
+    </div>
+
+    <!-- Interactive Diagram -->
+    <div class="ecosystem-diagram">
+        <h2>Explore Different Ecosystems</h2>
+        <div class="diagram-part" onclick="showInfo('forest')">Forest</div>
+        <div class="diagram-part" onclick="showInfo('ocean')">Ocean</div>
+        <div class="diagram-part" onclick="showInfo('desert')">Desert</div>
+        <div class="diagram-part" onclick="showInfo('wetlands')">Wetlands</div>
+        <div id="ecosystemInfo"></div>
+    </div>
+
+    <script>
+        // Collapsible sections
+        var collapsibles = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+        // Quiz functionality
+        function checkAnswer() {
+            var form = document.getElementById('quizForm');
+            var answer = form.answer.value;
+            var feedback = document.getElementById('quizFeedback');
+            if (answer == "3") {
+                feedback.innerHTML = "<p style='color:green'>Correct! Habitat restoration helps biodiversity.</p>";
+            } else {
+                feedback.innerHTML = "<p style='color:red'>Incorrect. Try again!</p>";
+            }
+        }
+
+        // Interactive Ecosystem Diagram
+        function showInfo(ecosystem) {
+            var info = document.getElementById('ecosystemInfo');
+            if (ecosystem === 'forest') {
+                info.innerHTML = "<p>Forests are home to 80% of the world's terrestrial biodiversity. They are crucial for carbon storage and water regulation.</p>";
+            } else if (ecosystem === 'ocean') {
+                info.innerHTML = "<p>Oceans cover 71% of the Earth's surface and are home to a vast variety of marine life, from microscopic plankton to the largest animals on the planet.</p>";
+            } else if (ecosystem === 'desert') {
+                info.innerHTML = "<p>Deserts, though often dry and barren, support unique species that have adapted to extreme conditions, including cacti, camels, and reptiles.</p>";
+            } else if (ecosystem === 'wetlands') {
+                info.innerHTML = "<p>Wetlands are among the most productive ecosystems in the world, providing habitat for a wide variety of species and offering critical ecosystem services like flood control and water purification.</p>";
+            }
+        }
+    </script>
+
+</body>
+</html>
