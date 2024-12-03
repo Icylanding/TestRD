@@ -2,142 +2,360 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodiversity Interactive Page</title>
+    <title>AI Prompt Generator for Student Semester Comments</title>
+    <!-- Responsive Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
         }
-        h1, h2 {
-            text-align: center;
+        .container {
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
-        .collapsible {
-            background-color: #4CAF50;
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 16px;
-        }
-        .active, .collapsible:hover {
-            background-color: #45a049;
-        }
-        .content {
-            padding: 0 18px;
-            display: none;
-            overflow: hidden;
-            background-color: #f1f1f1;
+        h1 {
             margin-bottom: 10px;
         }
-        .quiz-container {
-            margin: 20px;
+        .card {
+            margin-bottom: 20px;
         }
-        .quiz-question {
-            margin-bottom: 10px;
+        #aiPrompt {
+            height: 200px;
+            resize: none;
         }
-        .ecosystem-diagram {
-            margin: 20px;
+        .form-check-label {
+            margin-left: 5px;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+        footer {
             text-align: center;
-        }
-        .diagram-part {
-            display: inline-block;
-            padding: 20px;
-            margin: 10px;
-            border: 2px solid #000;
-            cursor: pointer;
+            padding-top: 10px;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
 
-    <h1>Biodiversity Interactive Learning</h1>
+    <div class="container">
+        <h1 class="text-center">AI Prompt Generator for Student Semester Comments</h1>
+        <p class="text-center text-muted">Designed by Ansel Zhao</p>
 
-    <h2>Explore the Wonders of Biodiversity</h2>
-
-    <!-- Collapsible Content -->
-    <button class="collapsible">What is Biodiversity?</button>
-    <div class="content">
-        <p>Biodiversity refers to the variety of life on Earth at all its levels, from genes to ecosystems. It includes the evolutionary, ecological, and cultural processes that sustain life.</p>
-    </div>
-
-    <button class="collapsible">Why is Biodiversity Important?</button>
-    <div class="content">
-        <p>Biodiversity is important because it boosts ecosystem productivity where each species has a role to play. For example, a larger number of plant species means a greater variety of crops. Greater species diversity ensures natural sustainability for all life forms.</p>
-    </div>
-
-    <button class="collapsible">Threats to Biodiversity</button>
-    <div class="content">
-        <p>Threats to biodiversity include habitat loss, climate change, pollution, invasive species, and over-exploitation of resources. Conservation efforts are essential to protect our planet's biological diversity.</p>
-    </div>
-
-    <!-- Quiz Section -->
-    <div class="quiz-container">
-        <h2>Test Your Knowledge!</h2>
-        <div class="quiz-question">
-            <p>Which of the following is NOT a threat to biodiversity?</p>
-            <form id="quizForm">
-                <input type="radio" name="answer" value="1"> Climate Change<br>
-                <input type="radio" name="answer" value="2"> Pollution<br>
-                <input type="radio" name="answer" value="3"> Habitat Restoration<br>
-                <input type="radio" name="answer" value="4"> Invasive Species<br><br>
-                <button type="button" onclick="checkAnswer()">Submit Answer</button>
-            </form>
+        <div class="card">
+            <div class="card-body">
+                <form id="promptForm">
+                    <!-- Student Name -->
+                    <div class="form-group">
+                        <label for="studentName"><strong>Student Name:</strong></label>
+                        <input type="text" class="form-control" id="studentName" name="studentName" placeholder="Enter student's full name">
+                    </div>
+                    <!-- Course Name -->
+                    <div class="form-group">
+                        <label for="courseName"><strong>Course Name:</strong></label>
+                        <input type="text" class="form-control" id="courseName" name="courseName" placeholder="Enter course name">
+                    </div>
+                    <!-- Sex -->
+                    <div class="form-group">
+                        <label><strong>Sex:</strong></label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="sexMale" name="sex" value="male">
+                            <label class="form-check-label" for="sexMale">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="sexFemale" name="sex" value="female">
+                            <label class="form-check-label" for="sexFemale">Female</label>
+                        </div>
+                    </div>
+                    <!-- Positive Attributes -->
+                    <div class="form-group">
+                        <label><strong>Positive Attributes (select any):</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- First Column -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Hardworking" id="positive1">
+                                    <label class="form-check-label" for="positive1">Hardworking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Punctual" id="positive2">
+                                    <label class="form-check-label" for="positive2">Punctual</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Enthusiastic" id="positive3">
+                                    <label class="form-check-label" for="positive3">Enthusiastic</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Creative" id="positive4">
+                                    <label class="form-check-label" for="positive4">Creative</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Responsible" id="positive5">
+                                    <label class="form-check-label" for="positive5">Responsible</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Cooperative" id="positive6">
+                                    <label class="form-check-label" for="positive6">Cooperative</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Respectful" id="positive7">
+                                    <label class="form-check-label" for="positive7">Respectful</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Diligent" id="positive8">
+                                    <label class="form-check-label" for="positive8">Diligent</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Motivated" id="positive9">
+                                    <label class="form-check-label" for="positive9">Motivated</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Attentive" id="positive10">
+                                    <label class="form-check-label" for="positive10">Attentive</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Second Column -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Polite" id="positive11">
+                                    <label class="form-check-label" for="positive11">Polite</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Honest" id="positive12">
+                                    <label class="form-check-label" for="positive12">Honest</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Kind" id="positive13">
+                                    <label class="form-check-label" for="positive13">Kind</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Confident" id="positive14">
+                                    <label class="form-check-label" for="positive14">Confident</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Organized" id="positive15">
+                                    <label class="form-check-label" for="positive15">Organized</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Team player" id="positive16">
+                                    <label class="form-check-label" for="positive16">Team player</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Good communicator" id="positive17">
+                                    <label class="form-check-label" for="positive17">Good communicator</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Critical thinker" id="positive18">
+                                    <label class="form-check-label" for="positive18">Critical thinker</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Problem solver" id="positive19">
+                                    <label class="form-check-label" for="positive19">Problem solver</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Leader" id="positive20">
+                                    <label class="form-check-label" for="positive20">Leader</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional Positive Attributes -->
+                        <label for="additionalPositives" class="mt-2"><strong>Additional Positive Attributes:</strong></label>
+                        <input type="text" class="form-control" id="additionalPositives" name="additionalPositives" placeholder="Enter additional positive attributes">
+                    </div>
+                    <!-- Recommendations for Improvement -->
+                    <div class="form-group">
+                        <label><strong>Recommendations for Improvement (select any):</strong></label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- First Column -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Improve time management" id="recommendation1">
+                                    <label class="form-check-label" for="recommendation1">Improve time management</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Participate more in class" id="recommendation2">
+                                    <label class="form-check-label" for="recommendation2">Participate more in class</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Enhance focus" id="recommendation3">
+                                    <label class="form-check-label" for="recommendation3">Enhance focus</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Be more proactive" id="recommendation4">
+                                    <label class="form-check-label" for="recommendation4">Be more proactive</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Develop critical thinking" id="recommendation5">
+                                    <label class="form-check-label" for="recommendation5">Develop critical thinking</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Work on organization skills" id="recommendation6">
+                                    <label class="form-check-label" for="recommendation6">Work on organization skills</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Build confidence" id="recommendation7">
+                                    <label class="form-check-label" for="recommendation7">Build confidence</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Improve communication skills" id="recommendation8">
+                                    <label class="form-check-label" for="recommendation8">Improve communication skills</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Be more punctual" id="recommendation9">
+                                    <label class="form-check-label" for="recommendation9">Be more punctual</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Increase class participation" id="recommendation10">
+                                    <label class="form-check-label" for="recommendation10">Increase class participation</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- Second Column -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Improve teamwork skills" id="recommendation11">
+                                    <label class="form-check-label" for="recommendation11">Improve teamwork skills</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Be more attentive" id="recommendation12">
+                                    <label class="form-check-label" for="recommendation12">Be more attentive</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Work on consistency" id="recommendation13">
+                                    <label class="form-check-label" for="recommendation13">Work on consistency</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Practice self-discipline" id="recommendation14">
+                                    <label class="form-check-label" for="recommendation14">Practice self-discipline</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Develop problem-solving skills" id="recommendation15">
+                                    <label class="form-check-label" for="recommendation15">Develop problem-solving skills</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Be more respectful" id="recommendation16">
+                                    <label class="form-check-label" for="recommendation16">Be more respectful</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Improve listening skills" id="recommendation17">
+                                    <label class="form-check-label" for="recommendation17">Improve listening skills</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Be more responsible" id="recommendation18">
+                                    <label class="form-check-label" for="recommendation18">Be more responsible</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Enhance creativity" id="recommendation19">
+                                    <label class="form-check-label" for="recommendation19">Enhance creativity</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" value="Show more initiative" id="recommendation20">
+                                    <label class="form-check-label" for="recommendation20">Show more initiative</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Additional Recommendations -->
+                        <label for="additionalRecommendations" class="mt-2"><strong>Additional Recommendations:</strong></label>
+                        <input type="text" class="form-control" id="additionalRecommendations" name="additionalRecommendations" placeholder="Enter additional recommendations">
+                    </div>
+                    <!-- Buttons -->
+                    <button type="button" class="btn btn-primary" onclick="generatePrompt()">Generate AI Prompt</button>
+                    <button type="button" class="btn btn-secondary" id="resetButton" onclick="resetForm()">Reset</button>
+                </form>
+            </div>
         </div>
-        <div id="quizFeedback"></div>
+        <!-- Generated AI Prompt -->
+        <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="aiPrompt"><strong>Generated AI Prompt:</strong></label>
+                    <textarea class="form-control" id="aiPrompt" readonly></textarea>
+                </div>
+                <button class="btn btn-success" id="copyButton" onclick="copyPrompt()">Copy Prompt</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Interactive Diagram -->
-    <div class="ecosystem-diagram">
-        <h2>Explore Different Ecosystems</h2>
-        <div class="diagram-part" onclick="showInfo('forest')">Forest</div>
-        <div class="diagram-part" onclick="showInfo('ocean')">Ocean</div>
-        <div class="diagram-part" onclick="showInfo('desert')">Desert</div>
-        <div class="diagram-part" onclick="showInfo('wetlands')">Wetlands</div>
-        <div id="ecosystemInfo"></div>
-    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Ansel Zhao. All rights reserved.</p>
+    </footer>
 
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Popper.js (for Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
     <script>
-        // Collapsible sections
-        var collapsibles = document.getElementsByClassName("collapsible");
-        for (var i = 0; i < collapsibles.length; i++) {
-            collapsibles[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
+        function generatePrompt() {
+            var name = document.getElementById('studentName').value;
+            var course = document.getElementById('courseName').value;
+            var sexElements = document.getElementsByName('sex');
+            var sex = '';
+            for (var i = 0; i < sexElements.length; i++) {
+                if (sexElements[i].checked) {
+                    sex = sexElements[i].value;
+                    break;
+                }
+            }
+
+            var positiveElements = document.querySelectorAll('.form-check-input[type="checkbox"]:checked');
+            var positives = [];
+            positiveElements.forEach(function(el) {
+                if (el.parentElement.parentElement.parentElement.parentElement.previousElementSibling.textContent.includes('Positive')) {
+                    positives.push(el.value);
                 }
             });
+
+            // Get additional positives
+            var additionalPositives = document.getElementById('additionalPositives').value;
+            if (additionalPositives.trim() !== '') {
+                positives.push(additionalPositives);
+            }
+
+            var recommendationElements = document.querySelectorAll('.form-check-input[type="checkbox"]:checked');
+            var recommendations = [];
+            recommendationElements.forEach(function(el) {
+                if (el.parentElement.parentElement.parentElement.parentElement.previousElementSibling.textContent.includes('Recommendations')) {
+                    recommendations.push(el.value);
+                }
+            });
+
+            // Get additional recommendations
+            var additionalRecommendations = document.getElementById('additionalRecommendations').value;
+            if (additionalRecommendations.trim() !== '') {
+                recommendations.push(additionalRecommendations);
+            }
+
+            var pronoun = (sex === 'male') ? 'He' : 'She';
+            var possessivePronoun = (sex === 'male') ? 'His' : 'Her';
+
+            var prompt = `Please write a semester comment for ${name} in the course ${course}. ${pronoun} has demonstrated the following positive attributes: ${positives.join(', ')}. `;
+
+            if (recommendations.length > 0) {
+                prompt += `${pronoun} can improve in the following areas: ${recommendations.join(', ')}. `;
+            }
+
+            prompt += `Please make the comment professional and appropriate for a high school student.`;
+
+            document.getElementById('aiPrompt').value = prompt;
         }
 
-        // Quiz functionality
-        function checkAnswer() {
-            var form = document.getElementById('quizForm');
-            var answer = form.answer.value;
-            var feedback = document.getElementById('quizFeedback');
-            if (answer == "3") {
-                feedback.innerHTML = "<p style='color:green'>Correct! Habitat restoration helps biodiversity.</p>";
-            } else {
-                feedback.innerHTML = "<p style='color:red'>Incorrect. Try again!</p>";
-            }
+        function copyPrompt() {
+            var aiPrompt = document.getElementById('aiPrompt');
+            aiPrompt.select();
+            aiPrompt.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert('Prompt copied to clipboard');
         }
 
-        // Interactive Ecosystem Diagram
-        function showInfo(ecosystem) {
-            var info = document.getElementById('ecosystemInfo');
-            if (ecosystem === 'forest') {
-                info.innerHTML = "<p>Forests are home to 80% of the world's terrestrial biodiversity. They are crucial for carbon storage and water regulation.</p>";
-            } else if (ecosystem === 'ocean') {
-                info.innerHTML = "<p>Oceans cover 71% of the Earth's surface and are home to a vast variety of marine life, from microscopic plankton to the largest animals on the planet.</p>";
-            } else if (ecosystem === 'desert') {
-                info.innerHTML = "<p>Deserts, though often dry and barren, support unique species that have adapted to extreme conditions, including cacti, camels, and reptiles.</p>";
-            } else if (ecosystem === 'wetlands') {
-                info.innerHTML = "<p>Wetlands are among the most productive ecosystems in the world, providing habitat for a wide variety of species and offering critical ecosystem services like flood control and water purification.</p>";
-            }
+        function resetForm() {
+            document.getElementById('promptForm').reset();
+            document.getElementById('aiPrompt').value = '';
         }
     </script>
 
